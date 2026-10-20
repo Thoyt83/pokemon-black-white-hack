@@ -2,6 +2,13 @@
 *.nds
 *.3ds
 *.cia
+*.sav
+*.dsv
+
+# Local ROM workspace and extracted copyrighted data
+roms/source/
+roms/work/
+roms/extracted/
 
 # Patch/build output
 build/
@@ -16,4 +23,9 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
 

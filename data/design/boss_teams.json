@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "status": "proposal",
+  "shared_rules": {
+    "pre_credits_species_pool": "unova",
+    "avoid_duplicate_species": true,
+    "avoid_duplicate_evolutionary_families": true,
+    "first_pass_level_policy": "preserve_vanilla"
+  },
+  "battles": [
+    {
+      "key": "striaton_cilan",
+      "phase": "main_story",
+      "party": [
+        { "species": "Sewaddle", "level": 12 },
+        { "species": "Pansage", "level": 14, "role": "ace" }
+      ],
+      "notes": "Keep Sewaddle's early moveset fair; preserve Pansage as the ace."
+    },
+    {
+      "key": "striaton_chili",
+      "phase": "main_story",
+      "party": [
+        { "species": "Darumaka", "level": 12 },
+        { "species": "Pansear", "level": 14, "role": "ace" }
+      ],
+      "notes": "Use restrained custom moves on Darumaka so Hustle does not create an early damage spike."
+    },
+    {
+      "key": "striaton_cress",
+      "phase": "main_story",
+      "party": [
+        { "species": "Tympole", "level": 12 },
+        { "species": "Panpour", "level": 14, "role": "ace" }
+      ],
+      "notes": "Preserve Panpour as the ace."
+    },
+    {
+      "key": "elite_four_shauntal_initial",
+      "phase": "main_story",
+      "append": { "species": "Zoroark", "level": 48 },
+      "notes": "Theme-adjacent exception necessitated by the four fully evolved Unova Ghost families."
+    },
+    {
+      "key": "elite_four_grimsley_initial",
+      "phase": "main_story",
+      "append": { "species": "Mandibuzz", "level": 48 }
+    },
+    {
+      "key": "elite_four_caitlin_initial",
+      "phase": "main_story",
+      "append": { "species": "Beheeyem", "level": 48 }
+    },
+    {
+      "key": "elite_four_marshal_initial",
+      "phase": "main_story",
+      "append": { "species": "Emboar", "level": 48 }
+    }
+  ]
+}
+
