@@ -13,7 +13,8 @@ Planning and toolchain setup. The first implementation milestone is a shared
 trainer rebalance for both English Black and English White.
 
 See [docs/DESIGN.md](docs/DESIGN.md) for the design rules and proposed first
-changes, and [docs/ROM_SETUP.md](docs/ROM_SETUP.md) for local ROM setup.
+changes, [docs/IDEAS.md](docs/IDEAS.md) for the feature backlog, and
+[docs/ROM_SETUP.md](docs/ROM_SETUP.md) for local ROM setup.
 
 ## Repository policy
 

@@ -95,6 +95,12 @@ Following Pokémon is a separate research milestone. It requires overworld
 engine work, follower behavior, map/script integration, and a large sprite
 asset set; it will not block the core rebalance.
 
+Character customization is also a separate research milestone. The desired
+version includes outfit shops in places such as Castelia City and salons that
+offer hairstyles. A preset-based implementation is the preferred fallback if
+independently selectable clothing and hair layers are impractical. See
+`IDEAS.md` for the feature backlog and feasibility gates.
+
 ## Release model
 
 The intended release artifacts are separate Black and White patches generated
