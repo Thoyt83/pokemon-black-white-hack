@@ -1,0 +1,19 @@
+# Commercial ROM images
+*.nds
+*.3ds
+*.cia
+
+# Patch/build output
+build/
+dist/
+output/
+*.bak
+*.tmp
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
