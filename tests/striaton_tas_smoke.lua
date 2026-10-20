@@ -16,9 +16,9 @@ local function advance(frames)
 end
 
 local function tap_a()
-  joypad.set(1, { A = true })
+  joypad.set({ A = true })
   advance(8)
-  joypad.set(1, {})
+  joypad.set({})
   advance(24)
 end
 

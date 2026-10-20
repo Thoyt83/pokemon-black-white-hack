@@ -17,16 +17,24 @@ manual smoke test.
 
 The `Local ROM TAS smoke test` workflow is manual-only and targets a dedicated
 Windows self-hosted runner. It builds the Striaton patches from the runner's
-local clean ROMs, launches BizHawk's melonDS core with a local battle savestate,
-plays a short scripted input sequence, and uploads battle screenshots as
-Actions artifacts. It never copies source ROMs or savestates into the checkout
-or uploads them. Because this repository is public, the runner job is restricted
-to manual dispatch from `main` by the repository owner and is not attached to
-push or pull-request events. The screenshot artifacts themselves are public.
+local clean ROMs and runs BizHawk with a local battle savestate. It never copies
+source ROMs or savestates into the checkout or uploads them. Because this
+repository is public, the runner job is restricted to manual dispatch from
+`main` by the repository owner and is not attached to push or pull-request
+events. The screenshot artifacts themselves are public.
+
+A separate local checkpoint generator edits a disposable copy of a matching
+Black/White raw save to place the player at the Striaton Gym entrance, reopen the
+first-gym battle flags, clear the Trio Badge bit, and recalculate both CRC fields
+for the affected save blocks in both save copies. The source save is unchanged
+and remains local. BizHawk accepted this generated White checkpoint and loaded
+the player into the gym interior. It is a reliable in-gym starting point, not a
+battle-start savestate; the trainer encounter and battle sequence still need to
+be automated.
 
 See [ROM_SETUP.md](ROM_SETUP.md#tas-runner-setup) for the one-time runner and
-checkpoint setup. The job cannot run until that Windows runner is online and
-each selected checkpoint exists locally.
+checkpoint setup. The current action cannot run until that Windows runner is
+online and each selected battle savestate exists locally.
 
 ## 2026-10-19 — Striaton milestone
 
@@ -48,7 +56,7 @@ Environment: melonDS 1.1 for Windows x86_64.
 
 ### Still required
 
-- Play from a fresh save, or use a compatible save near Striaton City.
+- Automate walking from the verified in-gym entrance to the leader encounter.
 - Trigger all three possible leader battles and confirm the lead Pokémon,
   levels, moves, animations, and battle completion.
 - Evaluate whether each matchup feels like a modest vanilla-plus challenge.

@@ -64,3 +64,32 @@ an emulator smoke test and visual evidence, not an automated judgment of game
 balance. Artifacts include gameplay screenshots and are publicly accessible
 because the repository is public.
 
+## Create the verified Striaton Gym-entry save
+
+For a local test without a pre-existing BizHawk `.State`, create a disposable
+raw-save checkpoint from a save that matches the ROM version:
+
+```powershell
+python -m pip install -r requirements.txt
+python scripts/create_test_checkpoint.py `
+  --source "C:\path\to\your-matching-save.sav" `
+  --rom "roms\source\pokemon_white.nds" `
+  --output "build\rom-test\white-striaton-gym.sav"
+```
+
+The generator confirms the save's Black/White version before editing it. It
+places the player at Striaton Gym (map 7, entry X=5, Y=4, Z=0), clears the first
+gym's completion flags and Trio Badge bit, and updates both in-block and mirrored
+CRC16 fields in the primary and backup save copies. It never edits the source
+save. This exact White checkpoint was accepted by BizHawk and visibly loaded
+the player into the gym interior.
+
+Copy the generated `.sav` to BizHawk's `NDS\SaveRAM` entry for the patched ROM,
+preserving any existing file first. Launch the patched ROM with
+`tests/bizhawk_save_checkpoint_verify.lua`; set `BW_TAS_OUTPUT_DIR` to a local
+output directory. The script advances with A through the intro and captures
+only three milestones: the Continue card, C-Gear prompt, and loaded gym scene.
+These save-based checkpoints are now verified locally; the GitHub Action above
+still consumes battle-start `.State` files until its runner workflow is wired to
+this generator and the battle-entry input sequence is automated.
+

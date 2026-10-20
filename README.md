@@ -9,8 +9,10 @@ gimmicks, or a pre-game National Dex.
 
 ## Current status
 
-Planning and toolchain setup. The first implementation milestone is a shared
-trainer rebalance for both English Black and English White.
+The first Striaton trainer rebalance builds for both English Black and English
+White. A local White save checkpoint has been verified loading the player inside
+Striaton Gym. The next testing milestone is automating the leader encounter and
+battle from that in-gym starting point.
 
 See [docs/DESIGN.md](docs/DESIGN.md) for the design rules and proposed first
 changes, [docs/IDEAS.md](docs/IDEAS.md) for the feature backlog, and
