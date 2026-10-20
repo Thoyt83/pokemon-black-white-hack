@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
 import struct
@@ -18,7 +19,7 @@ import ndspy.rom
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_DIR = ROOT / "roms" / "source"
+SOURCE_DIR = Path(os.environ.get("BW_ROM_SOURCE_DIR", ROOT / "roms" / "source")).resolve()
 BUILD_DIR = ROOT / "build" / "striaton"
 DESIGN_PATH = ROOT / "data" / "design" / "boss_teams.json"
 REFERENCE_PATH = ROOT / "data" / "reference" / "gen5_ids.json"

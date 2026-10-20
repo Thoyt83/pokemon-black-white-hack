@@ -9,6 +9,7 @@
 roms/source/
 roms/work/
 roms/extracted/
+roms/test-saves/
 
 # Patch/build output
 build/

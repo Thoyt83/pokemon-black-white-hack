@@ -1,11 +1,15 @@
 {
   "species": {
     "Darumaka": 554,
+    "Emboar": 500,
+    "Beheeyem": 606,
+    "Mandibuzz": 630,
     "Pansage": 511,
     "Pansear": 513,
     "Panpour": 515,
     "Sewaddle": 540,
-    "Tympole": 535
+    "Tympole": 535,
+    "Zoroark": 571
   },
   "moves": {
     "BubbleBeam": 61,

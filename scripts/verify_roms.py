@@ -4,12 +4,13 @@
 from __future__ import annotations
 
 import hashlib
+import os
 from pathlib import Path
 import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_DIR = ROOT / "roms" / "source"
+SOURCE_DIR = Path(os.environ.get("BW_ROM_SOURCE_DIR", ROOT / "roms" / "source")).resolve()
 
 TARGETS = {
     "black": {
@@ -97,7 +98,7 @@ def main() -> int:
     for label, target in TARGETS.items():
         paths = matches[label]
         if not paths:
-            print(f"[missing] {label}: no {target['game_code']} ROM found in {SOURCE_DIR.relative_to(ROOT)}")
+            print(f"[missing] {label}: no {target['game_code']} ROM found in {SOURCE_DIR}")
             results.append(False)
         elif len(paths) > 1:
             names = ", ".join(path.name for path in paths)
