@@ -3,12 +3,15 @@
 The project needs clean, personally dumped English copies of both games. Do not
 commit or upload them to GitHub.
 
-Place the files here:
+Place the files in `roms/source/`. The suggested names are:
 
 ```text
 roms/source/pokemon_black.nds
 roms/source/pokemon_white.nds
 ```
+
+Other filenames are accepted; the validator identifies each game from its
+Nintendo DS cartridge header.
 
 Then run:
 

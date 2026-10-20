@@ -10,28 +10,58 @@
   "battles": [
     {
       "key": "striaton_cilan",
+      "trainer_id": 12,
       "phase": "main_story",
       "party": [
-        { "species": "Sewaddle", "level": 12 },
-        { "species": "Pansage", "level": 14, "role": "ace" }
+        {
+          "species": "Sewaddle",
+          "level": 12,
+          "moves": ["Bug Bite", "String Shot", "Work Up"]
+        },
+        {
+          "species": "Pansage",
+          "level": 14,
+          "role": "ace",
+          "preserve_vanilla_data": true
+        }
       ],
       "notes": "Keep Sewaddle's early moveset fair; preserve Pansage as the ace."
     },
     {
       "key": "striaton_chili",
+      "trainer_id": 11,
       "phase": "main_story",
       "party": [
-        { "species": "Darumaka", "level": 12 },
-        { "species": "Pansear", "level": 14, "role": "ace" }
+        {
+          "species": "Darumaka",
+          "level": 12,
+          "moves": ["Tackle", "Incinerate", "Rollout", "Work Up"]
+        },
+        {
+          "species": "Pansear",
+          "level": 14,
+          "role": "ace",
+          "preserve_vanilla_data": true
+        }
       ],
       "notes": "Use restrained custom moves on Darumaka so Hustle does not create an early damage spike."
     },
     {
       "key": "striaton_cress",
+      "trainer_id": 13,
       "phase": "main_story",
       "party": [
-        { "species": "Tympole", "level": 12 },
-        { "species": "Panpour", "level": 14, "role": "ace" }
+        {
+          "species": "Tympole",
+          "level": 12,
+          "moves": ["BubbleBeam", "Supersonic", "Round", "Work Up"]
+        },
+        {
+          "species": "Panpour",
+          "level": 14,
+          "role": "ace",
+          "preserve_vanilla_data": true
+        }
       ],
       "notes": "Preserve Panpour as the ace."
     },

@@ -1,0 +1,22 @@
+{
+  "species": {
+    "Darumaka": 554,
+    "Pansage": 511,
+    "Pansear": 513,
+    "Panpour": 515,
+    "Sewaddle": 540,
+    "Tympole": 535
+  },
+  "moves": {
+    "BubbleBeam": 61,
+    "Bug Bite": 450,
+    "Incinerate": 510,
+    "Rollout": 205,
+    "Round": 496,
+    "String Shot": 81,
+    "Supersonic": 48,
+    "Tackle": 33,
+    "Work Up": 526
+  }
+}
+
