@@ -28,13 +28,15 @@ Black/White raw save to place the player at the Striaton Gym entrance, reopen th
 first-gym battle flags, clear the Trio Badge bit, and recalculate both CRC fields
 for the affected save blocks in both save copies. The source save is unchanged
 and remains local. BizHawk accepted this generated White checkpoint and loaded
-the player into the gym interior. It is a reliable in-gym starting point, not a
-battle-start savestate; the trainer encounter and battle sequence still need to
-be automated.
+the player into the gym interior. The manual TAS action now has a `gym-entry`
+mode that generates and checks this save directly; the existing leader choices
+still consume battle-start `.State` files. The trainer encounter and battle
+sequence still need to be automated from the verified in-gym starting point.
 
 See [ROM_SETUP.md](ROM_SETUP.md#tas-runner-setup) for the one-time runner and
-checkpoint setup. The current action cannot run until that Windows runner is
-online and each selected battle savestate exists locally.
+checkpoint setup. The `gym-entry` action requires the Windows runner, BizHawk,
+both source ROMs, and a matching local raw save for the selected game. The
+leader battle-start options additionally require a corresponding `.State` file.
 
 ## 2026-10-19 — Striaton milestone
 

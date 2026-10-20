@@ -9,10 +9,10 @@ on:
         type: choice
         options: [black, white]
       checkpoint:
-        description: Striaton Gym battle checkpoint
+        description: Gym entry (generated save) or a leader battle (local savestate)
         required: true
         type: choice
-        options: [cilan, chili, cress]
+        options: [gym-entry, cilan, chili, cress]
 
 permissions:
   contents: read

@@ -44,25 +44,32 @@ the workflow intentionally does not upload ROMs or saves.
    the runner process:
    - `BW_ROM_SOURCE_DIR`: directory containing exactly one clean English Black
      ROM and one clean English White ROM (`.nds` files).
-   - `BW_CHECKPOINT_DIR`: directory containing BizHawk `.State` checkpoints.
+   - `BW_CHECKPOINT_DIR`: directory containing optional BizHawk `.State`
+     checkpoints for leader battle-start tests.
+   - `BW_BLACK_SAVE` and `BW_WHITE_SAVE`: paths to matching, local raw saves
+     (512 KiB each). Only the selected game's save is required for a gym-entry
+     checkpoint test. Saves stay outside the repository and are never uploaded.
    - `BIZHAWK_EXE`: full path to `EmuHawk.exe`.
 4. Install project dependencies and build the local patch with
    `python -m pip install -r requirements.txt` and
    `python scripts/build_striaton.py`. For each game/leader combination, use
    the resulting patched Striaton ROM in BizHawk,
    enter the corresponding Gym battle, and save a BizHawk state at the battle
-   start. Name them `black-cilan.State`, `black-chili.State`,
+   start if you want a leader battle-start test. Name them `black-cilan.State`, `black-chili.State`,
    `black-cress.State`, `white-cilan.State`, `white-chili.State`, and
    `white-cress.State`. Keep these files in the local checkpoint directory;
    do not add them to Git.
 5. In GitHub, open Actions → `Local ROM TAS smoke test` → Run workflow and
-   choose a game and leader. Download the resulting screenshot artifact to
-   inspect the scripted battle sequence.
+   choose a game and `gym-entry` to generate a disposable save checkpoint and
+   verify it loads into the gym. Choose a leader to run the separate battle-start
+   TAS from a local `.State` file. Download the screenshot artifact to inspect
+   the result.
 
-The workflow runs a fixed, repeatable sequence from a supplied savestate. It is
-an emulator smoke test and visual evidence, not an automated judgment of game
-balance. Artifacts include gameplay screenshots and are publicly accessible
-because the repository is public.
+The workflow's gym-entry path builds the save checkpoint from a local save and
+restores the runner's prior BizHawk SaveRAM afterward. Leader battle-start paths
+still use supplied savestates. Both are emulator smoke tests and visual evidence,
+not an automated judgment of game balance. Artifacts include gameplay screenshots
+and are publicly accessible because the repository is public.
 
 ## Create the verified Striaton Gym-entry save
 
@@ -89,7 +96,12 @@ preserving any existing file first. Launch the patched ROM with
 `tests/bizhawk_save_checkpoint_verify.lua`; set `BW_TAS_OUTPUT_DIR` to a local
 output directory. The script advances with A through the intro and captures
 only three milestones: the Continue card, C-Gear prompt, and loaded gym scene.
-These save-based checkpoints are now verified locally; the GitHub Action above
-still consumes battle-start `.State` files until its runner workflow is wired to
-this generator and the battle-entry input sequence is automated.
+The `gym-entry` GitHub Action uses the same generator and restores the runner's
+previous SaveRAM after the run. Leader battle-start tests still use separate
+`.State` files until the battle-entry input sequence is automated.
+
+For a visible manual launch that leaves BizHawk open in the gym, use
+`tests/bizhawk_launch_in_striaton.lua` with the patched ROM after the generated
+checkpoint has been copied into its SaveRAM slot. It advances the intro and
+wireless prompts, then returns the emulator to normal speed without exiting.
 

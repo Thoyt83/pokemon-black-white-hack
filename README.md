@@ -11,8 +11,9 @@ gimmicks, or a pre-game National Dex.
 
 The first Striaton trainer rebalance builds for both English Black and English
 White. A local White save checkpoint has been verified loading the player inside
-Striaton Gym. The next testing milestone is automating the leader encounter and
-battle from that in-gym starting point.
+Striaton Gym. The local TAS action can now generate this gym-entry checkpoint
+from a matching save; automating the leader encounter and battle from there is
+the next testing milestone.
 
 See [docs/DESIGN.md](docs/DESIGN.md) for the design rules and proposed first
 changes, [docs/IDEAS.md](docs/IDEAS.md) for the feature backlog, and

@@ -3,6 +3,7 @@
 
 local output_dir = assert(os.getenv("BW_TAS_OUTPUT_DIR"), "BW_TAS_OUTPUT_DIR is required")
 local log = assert(io.open(output_dir .. "/save-check.txt", "w"), "cannot create verification log")
+local result = assert(io.open(output_dir .. "/result.txt", "w"), "cannot create verification result")
 
 local function advance(frames)
   for _ = 1, frames do emu.frameadvance() end
@@ -24,9 +25,20 @@ local function read_u32_le(address, domain)
 end
 
 client.speedmode(1000)
-log:write(string.format("Initial SRAM map ID: %d\n", read_u32_le(0x19580, "SRAM")))
+local initial_map_id = read_u32_le(0x19580, "SRAM")
+log:write(string.format("Initial SRAM map ID: %d\n", initial_map_id))
 log:write(string.format("Initial SRAM badge flags: 0x%02X\n", memory.readbyte(0x21204, "SRAM")))
 log:flush()
+
+if initial_map_id ~= 7 then
+  local failure = string.format("FAIL: expected Striaton Gym map 7, found map %d.\n", initial_map_id)
+  log:write(failure)
+  result:write(failure)
+  result:close()
+  log:close()
+  client.exit()
+  return
+end
 
 for attempt = 1, 46 do
   tap_a()
@@ -48,7 +60,10 @@ advance(8)
 joypad.set({})
 advance(900)
 client.screenshot(output_dir .. "/save-check-gameplay.png")
-log:write("Confirmed wireless-disabled mode and advanced 900 frames.\n")
+local success = "PASS: loaded the save-based Striaton Gym checkpoint, disabled wireless, and advanced 900 frames.\n"
+log:write(success)
+result:write(success)
+result:close()
 
 log:close()
 client.exit()
